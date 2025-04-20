@@ -1,9 +1,9 @@
 <?php
 // Railway MySQL Credentials
-$host = "containers-us-west-xxx.railway.app"; // Replace with your actual Railway host
-$port = 1234; // Replace with the Railway port
+$host = "mysql.railway.internal"; // Replace with your actual Railway host
+$port = 3306; // Replace with the Railway port
 $user = "root"; // Or your Railway-generated username
-$password = "your_password"; // Railway-generated password
+$password = "zeAxeZUrCXRasGgPorApVkRTkleygjzy"; // Railway-generated password
 $dbname = "railway"; // Usually 'railway' by default
 
 // Create MySQL connection
