@@ -1,0 +1,98 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #ccc;
+    font-family: 'Segoe UI', sans-serif;
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center;    /* Center vertically */
+    height: 100vh;          /* Full viewport height */
+}
+
+.register-container {
+    background-color: #e1b731;
+    width: 80%;
+    max-width: 800px;
+    padding: 40px;
+    border-radius: 5px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+}
+
+.register-container h2 {
+    margin-bottom: 10px;
+    text-align: center; /* Center the heading */
+}
+
+.sub-title {
+    margin-bottom: 20px;
+    font-weight: bold;
+    text-align: center; /* Center the subtitle */
+}
+
+form {
+    width: 100%;
+}
+
+.form-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.input-group {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.input-group.full {
+    width: 100%;
+}
+
+label {
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+input,
+select {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 25px;
+    background-color: #f2f2f2;
+    font-size: 14px;
+}
+
+input[type="file"] {
+    padding: 8px 5px;
+    border-radius: 5px;
+    background-color: #fff;
+}
+
+button {
+    background-color: #2d5c88;
+    color: white;
+    padding: 12px 40px;
+    border: none;
+    border-radius: 25px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.submit-group {
+    text-align: center;
+}
+
+.submit-group p {
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+.submit-group a {
+    color: #003366;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+

@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>StreetFix Announcements</title>
+  <link rel="stylesheet" href="announcement.css" />
+</head>
+<body>
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <h2>STREETFIX</h2>
+    <ul>
+      <li><a href="dashboard.php">🏠 Dashboard</a></li>
+      <li><a href="progress_tracking.php">🛠 Progress Tracking</a></li>
+      <li><a href="announcement.html">🔔 Announcements</a></li>
+      <li><a href="reports_analytics.php">📈 Reports & Analytics</a></li>
+    </ul>
+  </div>
+
+  <!-- Main Content Wrapper -->
+  <div class="main-content">
+
+    <!-- Header (Admin Profile) -->
+    <header>
+      <div class="user-dropdown" onclick="toggleDropdown()">
+        <div class="user-info">
+          <span class="user-name">👤 Admin</span>
+          <span class="dropdown">▾</span>
+        </div>
+        <div id="userDropdown" class="dropdown-content">
+          <a href="logout.php">🚪 Logout</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Announcements Section -->
+    <section class="announcements">
+      <div class="top-bar">
+        <h2>Announcements</h2>
+        <div class="actions">
+          <button class="create-btn">Create New Announcement</button>
+          <select>
+            <option>All Announcements</option>
+            <option>Infrastructure Updates</option>
+            <option>Emergency Alerts</option>
+            <option>Community Updates</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="announcement-card">
+        <div class="announcement-header">
+          <span class="badge emergency">Emergency Alerts</span>
+          <h3>Emergency Road Closure on Kalayaan Street</h3>
+        </div>
+        <p><strong>Date:</strong> 2025-04-05</p>
+        <p>Due to severe flooding, Kalayaan street will be temporarily closed for repairs.</p>
+        <div class="buttons">
+          <button class="archive">Archive</button>
+          <button class="edit">Edit</button>
+        </div>
+      </div>
+
+      <div class="announcement-card">
+        <div class="announcement-header">
+          <span class="badge infrastructure">Infrastructure Updates</span>
+          <h3>Drainage System Upgrades</h3>
+        </div>
+        <p><strong>Date:</strong> 2025-04-06</p>
+        <p>Maintenance teams will be upgrading the drainage system on Alley 17 to prevent flooding.</p>
+        <div class="buttons">
+          <button class="archive">Archive</button>
+          <button class="edit">Edit</button>
+        </div>
+      </div>
+
+      <div class="announcement-card">
+        <div class="announcement-header">
+          <span class="badge community">Community Updates</span>
+          <h3>Road Erosion & Sinkholes Alert</h3>
+        </div>
+        <p><strong>Date:</strong> 2025-04-07</p>
+        <p>Reports of road erosion and sinkholes have been noted in Barangay 201. Motorists and pedestrians are advised to avoid the affected areas.</p>
+        <div class="buttons">
+          <button class="archive">Archive</button>
+          <button class="edit">Edit</button>
+        </div>
+      </div>
+
+      <div class="pagination">
+        <span>Page 1</span>
+        <button disabled>Next</button>
+      </div>
+    </section>
+  </div> <!-- End of .main-content -->
+
+  <!-- Modal Form for Creating Announcement -->
+  <div id="announcementModal" class="modal">
+    <div class="modal-content">
+      <h2>Create New Announcement</h2>
+      <form id="announcementForm">
+        <label for="title">Title</label>
+        <input type="text" id="title" name="title" required>
+
+        <label for="date">Date</label>
+        <input type="date" id="date" name="date" required>
+
+        <label for="category">Category</label>
+        <select id="category" name="category" required>
+          <option value="infrastructure">Infrastructure Updates</option>
+          <option value="emergency">Emergency Alerts</option>
+          <option value="community">Community Updates</option>
+        </select>
+
+        <label for="description">Description</label>
+        <textarea id="description" name="description" rows="4" required></textarea>
+
+        <div class="modal-actions">
+          <button type="submit" class="submit-btn">Submit</button>
+          <button type="button" class="cancel-btn" onclick="closeModal()">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script>
+    function toggleDropdown() {
+      document.getElementById("userDropdown").classList.toggle("show");
+    }
+
+    // Close dropdown on outside click
+    window.addEventListener("click", function (event) {
+      if (!event.target.matches('.user-dropdown') && !event.target.closest('.user-dropdown')) {
+        var dropdowns = document.getElementsByClassName("dropdown-content");
+        for (var i = 0; i < dropdowns.length; i++) {
+          var openDropdown = dropdowns[i];
+          if (openDropdown.classList.contains('show')) {
+            openDropdown.classList.remove('show');
+          }
+        }
+      }
+    });
+
+    const modal = document.getElementById("announcementModal");
+    const createBtn = document.querySelector(".create-btn");
+
+    // Show modal
+    createBtn.onclick = () => {
+      clearForm();
+      editingCard = null;
+      modal.style.display = "block";
+    };
+
+    function closeModal() {
+      modal.style.display = "none";
+    }
+
+    // Close modal on background click
+    window.onclick = (e) => {
+      if (e.target === modal) closeModal();
+    };
+
+    // Clear modal form
+    function clearForm() {
+      document.getElementById("title").value = "";
+      document.getElementById("date").value = "";
+      document.getElementById("category").value = "infrastructure";
+      document.getElementById("description").value = "";
+    }
+
+    let editingCard = null;
+
+    document.querySelectorAll(".edit").forEach((btn) => {
+      btn.addEventListener("click", function () {
+        const card = this.closest(".announcement-card");
+        editingCard = card;
+
+        const title = card.querySelector("h3").innerText;
+        const dateText = card.querySelector("p strong")?.nextSibling?.textContent.trim();
+        const description = card.querySelectorAll("p")[1].innerText;
+        const category = card.querySelector(".badge")?.innerText;
+
+        document.getElementById("title").value = title;
+        document.getElementById("date").value = dateText || "";
+        document.getElementById("description").value = description;
+
+        if (category.includes("Infrastructure")) {
+          document.getElementById("category").value = "infrastructure";
+        } else if (category.includes("Emergency")) {
+          document.getElementById("category").value = "emergency";
+        } else {
+          document.getElementById("category").value = "community";
+        }
+
+        modal.style.display = "block";
+      });
+    });
+
+    // Archive button hides the card
+    document.querySelectorAll(".archive").forEach((btn) => {
+      btn.addEventListener("click", function () {
+        const card = this.closest(".announcement-card");
+        card.style.display = "none";
+      });
+    });
+
+    document.getElementById("announcementForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const title = document.getElementById("title").value;
+      const date = document.getElementById("date").value;
+      const category = document.getElementById("category").value;
+      const description = document.getElementById("description").value;
+
+      const categoryLabel = {
+        infrastructure: "Infrastructure Updates",
+        emergency: "Emergency Alerts",
+        community: "Community Updates"
+      };
+
+      if (editingCard) {
+        editingCard.querySelector("h3").innerText = title;
+        editingCard.querySelectorAll("p")[0].innerHTML = `<strong>Date:</strong> ${date}`;
+        editingCard.querySelectorAll("p")[1].innerText = description;
+
+        const badge = editingCard.querySelector(".badge");
+        if (badge) {
+          badge.innerText = categoryLabel[category];
+          badge.className = `badge ${category}`;
+        }
+      }
+
+      editingCard = null;
+      closeModal();
+    });
+  </script>
+</body>
+</html>

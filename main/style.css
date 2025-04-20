@@ -1,0 +1,321 @@
+/* RESET & BASE */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+#home {
+  scroll-margin-top: 100px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #fff;
+  color: #333;
+  padding-top: 80px; /* Push content below fixed navbar */
+}
+
+/* HEADER - STICKY NAVBAR */
+header {
+  background-color: #b2853c;
+  padding: 15px 0;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 24px;
+  color: white;
+  font-weight: bold;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+nav a.active,
+nav a:hover {
+  text-decoration: underline;
+}
+
+/* HERO SECTION */
+.hero {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  padding: 50px 10%;
+  background-color: #f9f9f9;
+}
+
+.hero-text {
+  flex: 1;
+  padding-right: 30px;
+  min-width: 300px;
+}
+
+.hero-text h2 {
+  font-size: 38px;
+  color: #6a3b0f;
+  margin-bottom: 20px;
+}
+
+.hero-text p {
+  color: #6a3b0f;
+  font-size: 16px;
+  margin-bottom: 30px;
+  line-height: 1.6;
+}
+
+.hero-text button {
+  padding: 12px 20px;
+  background-color: #6a3b0f;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.hero-image {
+  flex: 1;
+  background: url('images/dpwh.jpg') no-repeat center center/cover;
+  height: 450px;
+  min-width: 300px;
+  border-radius: 8px;
+}
+
+/* SERVICES SECTION */
+#services {
+  scroll-margin-top: 120px;
+}
+
+.services {
+  padding: 60px 10%;
+  text-align: center;
+  background-color: #fff;
+}
+
+.services h3 {
+  color: #6a3b0f;
+  font-weight: bold;
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.services h2 {
+  color: #6a3b0f;
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 50px;
+}
+
+.service-cards {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+.service-card {
+  max-width: 300px;
+  text-align: center;
+}
+
+.service-card img {
+  width: 150px;
+  height: 150px;
+  margin-bottom: 20px;
+}
+
+.service-card h4 {
+  color: #6a3b0f;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.service-card p {
+  font-size: 14px;
+  color: #6a3b0f;
+  line-height: 1.6;
+}
+
+/* ABOUT SECTION */
+#about {
+  scroll-margin-top: 120px;
+}
+
+.about {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 60px 10%;
+  background-color: #fff;
+}
+
+.about-text {
+  flex: 1;
+  min-width: 300px;
+  padding-right: 30px;
+}
+
+.about-text h3 {
+  color: #6a3b0f;
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.about-text h2 {
+  color: #6a3b0f;
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+.about-text p {
+  color: #6a3b0f;
+  font-size: 16px;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.about-image {
+  flex: 1;
+  min-width: 300px;
+  text-align: center;
+}
+
+.about-image img {
+  width: 350px;
+  height: auto;
+  border-radius: 8px;
+}
+
+/* CONTACT SECTION */
+.contact {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 60px 10%;
+  background-color: #fff;
+  gap: 40px;
+}
+
+.contact-left,
+.contact-right {
+  flex: 1;
+  min-width: 300px;
+}
+
+.contact-left h3,
+.contact-left h2,
+.contact-left p,
+.contact-right h3,
+.contact-right label {
+  color: #6a3b0f;
+}
+
+.contact-left h2 {
+  margin: 10px 0 20px;
+}
+
+.contact-left p {
+  font-size: 16px;
+  margin-bottom: 15px;
+}
+
+.contact-right form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.contact-right input,
+.contact-right select {
+  border: none;
+  border-bottom: 1px solid #999;
+  padding: 8px;
+  font-size: 14px;
+  background: transparent;
+  outline: none;
+}
+
+.date-group {
+  display: flex;
+  gap: 10px;
+}
+
+.contact-right button {
+  width: 100px;
+  padding: 10px;
+  background-color: #6a3b0f;
+  color: white;
+  border: none;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.contact-right textarea {
+  border: 1px solid #999;
+  padding: 10px;
+  font-size: 14px;
+  resize: vertical;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .hero {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .hero-text {
+    padding: 0;
+  }
+
+  .hero-image {
+    margin-top: 20px;
+    width: 100%;
+  }
+
+  .about {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .about-text {
+    padding-right: 0;
+  }
+
+  .about-image img {
+    width: 100%;
+  }
+}

@@ -1,0 +1,369 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    display: flex;
+    height: 100vh;
+  }
+  
+  .sidebar {
+    width: 240px;
+    background: #ffffff;
+    padding: 20px;
+    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
+    height: 100vh;
+  }
+  
+  .sidebar h2 {
+    color: #b2853c;
+    margin-bottom: 30px;
+  }
+  
+  .sidebar ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .sidebar ul li {
+    padding: 12px;
+    margin-bottom: 10px;
+    background-color: #f5f5f5;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .sidebar ul li.active,
+  .sidebar ul li:hover {
+    background-color: #dcdcdc;
+    font-weight: bold;
+  }
+  
+  .sidebar ul li a {
+    text-decoration: none;
+    color: #333;
+    display: block;
+  }
+  
+  .main-content {
+    flex: 1;
+    background: #f9f9f9;
+    padding: 20px;
+  }
+  
+  header {
+    display: flex;
+    justify-content: flex-end;
+    background: #b2853c;
+    padding: 10px 20px;
+    color: white;
+    border-radius: 5px;
+  }
+  
+  .admin {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .avatar {
+    font-size: 24px;
+    background: #fff;
+    color: #b2853c;
+    padding: 5px;
+    border-radius: 50%;
+  }
+  
+  .dashboard h2 {
+    margin-top: 20px;
+  }
+  
+  .overview {
+    display: flex;
+    gap: 20px;
+    margin: 20px 0;
+  }
+  
+  .overview .box {
+    flex: 1;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+  }
+  
+  .box.blue { background-color: #3f8efc; }
+  .box.green { background-color: #2baf4a; }
+  .box.yellow { background-color: #d4a434; }
+  
+  .reports, .activities {
+    background: white;
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 8px;
+  }
+  
+  .reports table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .reports th, .reports td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  .status {
+    padding: 5px 12px;
+    border-radius: 20px;
+    color: white;
+    font-size: 13px;
+  }
+  
+  .status.pending { background-color: #d63031; }
+  .status.progress { background-color: #f1c40f; }
+  .status.resolved { background-color: #27ae60; }
+  
+  .activities ul {
+    padding-left: 20px;
+  }
+  
+  .activities li {
+    margin-bottom: 10px;
+  }
+
+  .user-dropdown {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+    z-index: 1;
+    border-radius: 6px;
+    overflow: hidden;
+    margin-top: 10px;
+  }
+  
+  .dropdown-content a {
+    color: #333;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+  
+  .dropdown-content a:hover {
+    background-color: #f1f1f1;
+  }
+  
+  .show {
+    display: block;
+  }
+  
+  /* Modal */
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 100;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  
+  .modal-content {
+    background-color: #fefefe;
+    margin: 10% auto;
+    padding: 20px;
+    border-radius: 8px;
+    width: 400px;
+    max-width: 90%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  .close:hover {
+    color: #333;
+  }
+  
+  /* Profile Info Styles */
+.profile-info {
+  display: flex;
+  gap: 20px;
+  margin: 20px 0;
+}
+
+.profile-avatar {
+  font-size: 60px;
+  background-color: #f0f0f0;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile-details {
+  flex: 1;
+}
+
+.profile-details p {
+  margin: 10px 0;
+}
+
+.profile-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.edit-btn, .close-btn {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.edit-btn {
+  background-color: #b2853c;
+  color: white;
+}
+
+.close-btn {
+  background-color: #f0f0f0;
+}
+
+.edit-btn:hover {
+  background-color: #9a7534;
+}
+
+.close-btn:hover {
+  background-color: #e0e0e0;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #b2853c;
+  padding: 8px 14px;
+  border-radius: 25px;
+}
+
+.avatar-circle img {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+}
+
+.user-name {
+  font-weight: 500;
+  color: white;
+  font-size: 15px;
+}
+
+.dropdown {
+  color: white;
+  font-size: 13px;
+  margin-left: 4px;
+}
+
+.analytics-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-top: 20px;
+  }
+  
+  .analytics-card {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+  
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .sort-options {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .sort-options button {
+    padding: 5px 10px;
+    border: 1px solid #ddd;
+    background: white;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .sort-options button.active {
+    background: #b2853c;
+    color: white;
+    border-color: #b2853c;
+  }
+  
+  .chart-container {
+    height: 250px;
+    margin-top: 20px;
+    position: relative;
+  }
+  
+  .chart-placeholder {
+    width: 100%;
+    height: 100%;
+    background: #f5f5f5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #777;
+    font-style: italic;
+  }
+  
+  .issue-categories {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+  
+  .category {
+    text-align: center;
+    padding: 10px;
+    flex: 1;
+  }
+  
+  .download-section {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+  }
+  
+  .download-btn {
+    background: #b2853c;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
