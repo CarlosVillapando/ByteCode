@@ -1,12 +1,19 @@
 <?php
-$servername = "localhost";
-$username = "root"; // Change if needed
-$password = ""; // Change if needed
-$dbname = "users"; // Your database name
+// Railway MySQL Credentials
+$host = "containers-us-west-xxx.railway.app"; // Replace with your actual Railway host
+$port = 1234; // Replace with the Railway port
+$user = "root"; // Or your Railway-generated username
+$password = "your_password"; // Railway-generated password
+$dbname = "railway"; // Usually 'railway' by default
 
-$conn = new mysqli($servername, $username, $password, $dbname);
+// Create MySQL connection
+$conn = new mysqli($host, $user, $password, $dbname, $port);
+
 // Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
+
+// Optional: set character encoding
+$conn->set_charset("utf8mb4");
 ?>
